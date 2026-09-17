@@ -35,7 +35,7 @@ class modKernUX extends DolibarrModules
 		$this->description = 'User interface in the style of the KERN UX design system, main menu as left sidebar';
 		$this->editor_name = 'Michael Plas (Michi91)';
 		$this->editor_url = 'https://github.com/MichaelSalp/dolibarr-kernux';
-		$this->version = '1.0.0';
+		$this->version = '1.0.1';
 		$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
 		$this->picto = 'kernux.svg@kernux';
 

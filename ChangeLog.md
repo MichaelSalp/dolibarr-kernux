@@ -1,5 +1,10 @@
 # ChangeLog
 
+## 1.0.1
+
+- README: Bilder und Badges werden auch auf der Modul-Hilfeseite in Dolibarr angezeigt (absolute Bild-URLs,
+  kein HTML), Logo als PNG.
+
 ## 1.0.0
 
 - Erste Version: Oberfläche im Stil von KERN UX (2.6.1) über dem Theme eldy, Hauptmenü als linke Sidebar mit

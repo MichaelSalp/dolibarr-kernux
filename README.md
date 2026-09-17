@@ -1,10 +1,10 @@
-<img src="docs/logo.svg" alt="" width="96" align="right">
+![KERN UX für Dolibarr](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/logo.png)
 
 # KERN UX für Dolibarr
 
 [![Version](https://img.shields.io/github/v/release/MichaelSalp/dolibarr-kernux?label=Version)](https://github.com/MichaelSalp/dolibarr-kernux/releases)
-[![Downloads](https://img.shields.io/github/downloads/MichaelSalp/dolibarr-kernux/total?label=Downloads)](https://github.com/MichaelSalp/dolibarr-kernux/releases)
-[![Lizenz](https://img.shields.io/github/license/MichaelSalp/dolibarr-kernux?label=Lizenz)](LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/MichaelSalp/dolibarr-kernux/total?label=Downloads&cacheSeconds=3600)](https://github.com/MichaelSalp/dolibarr-kernux/releases)
+[![Lizenz](https://img.shields.io/github/license/MichaelSalp/dolibarr-kernux?label=Lizenz&cacheSeconds=3600)](LICENSE)
 [![Dolibarr](https://img.shields.io/badge/Dolibarr-%E2%89%A5%2024.0-263c5c)](https://www.dolibarr.org)
 [![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%207.4-777bb4)](https://www.php.net)
 
@@ -12,13 +12,13 @@ Dolibarr-Modul, das die Oberfläche im Stil des Design-Systems **[KERN UX](https
 und das **Hauptmenü von oben in eine linke Sidebar** verlegt. Keine Änderungen am Dolibarr-Kern: Das Modul
 bringt einen eigenen Menü-Handler und ein Stylesheet mit und lässt sich jederzeit wieder abschalten.
 
-![Startseite](docs/screenshots/start.png)
+![Startseite](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/start.png)
 
 ## Download
 
-### [➜ module_kernux-1.0.0.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.0/module_kernux-1.0.0.zip)
+### [➜ module_kernux-1.0.1.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.1/module_kernux-1.0.1.zip)
 
-**Version 1.0.0** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.0) ·
+**Version 1.0.1** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.1) ·
 [alle Versionen](https://github.com/MichaelSalp/dolibarr-kernux/releases)
 
 Die ZIP-Datei unverändert (Dateiname nicht ändern) in Dolibarr unter
@@ -43,13 +43,13 @@ Die ZIP-Datei unverändert (Dateiname nicht ändern) in Dolibarr unter
 
 | Geschäftspartner | Bankabgleich |
 |---|---|
-| ![Geschäftspartner](docs/screenshots/geschaeftspartner.png) | ![Bankabgleich](docs/screenshots/bankabgleich.png) |
+| ![Geschäftspartner](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/geschaeftspartner.png) | ![Bankabgleich](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/bankabgleich.png) |
 
 | Dark Mode | Eingeklappte Sidebar |
 |---|---|
-| ![Dark Mode](docs/screenshots/start-dark.png) | ![Eingeklappte Sidebar](docs/screenshots/eingeklappt.png) |
+| ![Dark Mode](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/start-dark.png) | ![Eingeklappte Sidebar](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/eingeklappt.png) |
 
-<img src="docs/screenshots/mobil.png" alt="Mobile Ansicht mit geöffnetem Menü" width="300">
+![Mobile Ansicht mit geöffnetem Menü](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/mobil.png)
 
 ## Voraussetzungen
 
@@ -135,7 +135,7 @@ npm-Paket `@kern-ux/native` nach `vendor/kern/` kopieren und `VERSION` anpassen.
 **Release-ZIP bauen** (enthält nur die Moduldateien, gesteuert über `.gitattributes`):
 
 ```bash
-git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.0.zip v1.0.0
+git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.1.zip v1.0.1
 ```
 
 ## Autor
