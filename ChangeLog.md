@@ -1,5 +1,11 @@
 # ChangeLog
 
+## 1.0.2
+
+- README nach dem Muster des KERN-UX-Themes für WordPress: was KERN ist, Hinweis auf die Nachnutzung,
+  Abschnitte Barrierefreiheit und Grundidee, Lizenzkombination EUPL/GPL, Bildwortmarke.
+- `publiccode.yml` ergänzt.
+
 ## 1.0.1
 
 - README: Bilder und Badges werden auch auf der Modul-Hilfeseite in Dolibarr angezeigt (absolute Bild-URLs,

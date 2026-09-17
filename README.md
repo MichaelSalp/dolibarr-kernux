@@ -8,17 +8,31 @@
 [![Dolibarr](https://img.shields.io/badge/Dolibarr-%E2%89%A5%2024.0-263c5c)](https://www.dolibarr.org)
 [![PHP](https://img.shields.io/badge/PHP-%E2%89%A5%207.4-777bb4)](https://www.php.net)
 
-Dolibarr-Modul, das die Oberfläche im Stil des Design-Systems **[KERN UX](https://www.kern-ux.de)** gestaltet
-und das **Hauptmenü von oben in eine linke Sidebar** verlegt. Keine Änderungen am Dolibarr-Kern: Das Modul
-bringt einen eigenen Menü-Handler und ein Stylesheet mit und lässt sich jederzeit wieder abschalten.
+Ein Dolibarr-Modul auf Basis des **KERN Design-Systems**
+([kern-ux-plain](https://gitlab.opencode.de/kern-ux/kern-ux-plain) /
+npm-Paket [`@kern-ux/native`](https://www.npmjs.com/package/@kern-ux/native)). Es gestaltet die Oberfläche von
+Dolibarr im Stil von KERN und verlegt das **Hauptmenü von oben in eine linke Sidebar**.
+
+KERN ist ein Open-Source-Designsystem der öffentlichen Verwaltung, initiiert von den Ländern
+**Hamburg und Schleswig-Holstein** und heute länderübergreifend weiterentwickelt – von der kommunalen bis zur
+Bundesebene. Sein erklärtes Ziel ist ein digital zugänglicher Staat: barrierefrei, transparent und intuitiv
+nutzbar. Genau dafür steht KERN unter der European Union Public Licence: damit Verwaltungen es nachnutzen können.
+
+Dieses Modul ist eine solche Nachnutzung. Es überträgt das
+[KERN-UX-Theme für WordPress](https://gitlab.opencode.de/sgemlichheim/kern-ux-theme-for-wordpress) auf Dolibarr:
+Es bindet das **KERN-Kit unverändert** ein und übersetzt das von Dolibarr erzeugte Markup auf die
+KERN-Designtokens. Am Dolibarr-Kern wird nichts geändert; das Modul bringt einen eigenen Menü-Handler und ein
+Stylesheet mit und lässt sich jederzeit wieder abschalten.
+
+> Es handelt sich um ein nachgenutztes, nicht um ein offizielles Angebot des KERN-Projekts oder eines Landes.
 
 ![Startseite](https://raw.githubusercontent.com/MichaelSalp/dolibarr-kernux/main/docs/screenshots/start.png)
 
 ## Download
 
-### [➜ module_kernux-1.0.1.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.1/module_kernux-1.0.1.zip)
+### [➜ module_kernux-1.0.2.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.2/module_kernux-1.0.2.zip)
 
-**Version 1.0.1** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.1) ·
+**Version 1.0.2** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.2) ·
 [alle Versionen](https://github.com/MichaelSalp/dolibarr-kernux/releases)
 
 Die ZIP-Datei unverändert (Dateiname nicht ändern) in Dolibarr unter
@@ -119,23 +133,53 @@ normale eldy-Aussehen (ggf. Strg+F5).
 - Das Modul gestaltet Dolibarr über CSS. Seiten mit sehr eigenem Markup (manche Fremdmodule) übernehmen die Optik
   eventuell nur teilweise.
 - Der alte jQuery-Mobile-Modus (`dol_use_jmobile`) wird nicht unterstützt.
-- Inoffizielles Modul: nicht vom KERN-UX-Team herausgegeben oder geprüft. Es nutzt die veröffentlichten
-  Design-Tokens, bildet aber nicht alle KERN-Komponenten nach.
+- Es werden die KERN-Designtokens genutzt; KERN-Komponenten wie Kopfzeile, Dialog oder Accordion werden nicht
+  nachgebildet, weil Dolibarr dafür eigenes Markup erzeugt.
+
+## Barrierefreiheit
+
+Barrierefreiheit ist der Grund, aus dem KERN existiert – und der Grund, aus dem dieses Modul das Kit
+**unverändert** einbindet: Farben, Kontraste und Schrift kommen aus den KERN-Designtokens. Für öffentliche
+Stellen sind die [BITV 2.0](https://www.gesetze-im-internet.de/bitv_2_0/) bzw. die
+[EN 301 549](https://www.etsi.org/deliver/etsi_en/301500_301599/301549/) verbindlich; beide verweisen auf die
+[WCAG 2.1 auf Stufe AA](https://www.w3.org/Translations/WCAG21-de/).
+
+Was das Modul selbst beiträgt: eine benannte Hauptnavigation, `aria-current` am aktiven Bereich,
+`aria-expanded` am Einklapp-Schalter, dekorative Icons als `aria-hidden`, ein aktiver Menüpunkt, der nicht nur
+über Farbe erkennbar ist (fett und hinterlegt), durchgängig sichtbarer Fokus über `:focus-visible` und ein
+Hell-/Dunkel-Modus aus den KERN-Token.
+
+**Was außerhalb des Moduls liegt:** Seitenstruktur, Tabellen und Formulare erzeugt Dolibarr selbst. Das Modul
+ändert ihre Darstellung, nicht ihr Markup – eine vollständig barrierefreie Dolibarr-Oberfläche kann es allein
+nicht herstellen. Eine eigene *Farbe für Hyperlinks* wird unverändert als Akzent übernommen; ihren Kontrast
+(mindestens 4,5:1) bitte selbst prüfen.
+
+Gemeldete Barrieren im Modul sind willkommen – bitte als
+[Issue](https://github.com/MichaelSalp/dolibarr-kernux/issues).
+
+## Grundidee
+
+| Schicht | Aufgabe | Wird aktualisiert via |
+|---|---|---|
+| `vendor/kern/` | Das **unveränderte** KERN-Kit (CSS, Schrift Fira Sans) | Kopieren aus `@kern-ux/native` |
+| `css/kernux.css` | Brücke: übersetzt das Dolibarr-Markup (Theme eldy) auf KERN-Tokens | manuell (Modulpflege) |
+| `core/menus/standard/kernux_menu.php` | Menü-Handler: Sidebar, Einklappen, Logo (nutzt `eldy.lib.php`) | manuell (Modulpflege) |
+| `core/modules/modKernUX.class.php` | Modul-Deskriptor | manuell (Modulpflege) |
+
+> **Wichtig:** In `vendor/kern/` wird **nichts von Hand geändert**. Eigene Anpassungen gehören ausschließlich in
+> `css/kernux.css` – so bleiben KERN-Updates konfliktfrei. Das Kit wird als CSS-Layer eingebunden, damit sein
+> globales Reset das Dolibarr-Theme nicht überschreibt. Modul-eigene Klassen tragen das Präfix `kux-*`, um
+> Kollisionen mit künftigen KERN-Updates auszuschließen.
 
 ## Entwicklung
 
-- `core/menus/standard/kernux_menu.php` – Menü-Handler (Sidebar, Einklappen, Logo), nutzt `eldy.lib.php`
-- `css/kernux.css` – Gestaltung; KERN UX wird als CSS-Layer eingebunden, damit dessen globales Reset eldy nicht
-  überschreibt
-- `vendor/kern/` – KERN UX (`@kern-ux/native`, unverändert, Version in `vendor/kern/VERSION`)
-
 **KERN UX aktualisieren**: `dist/kern.min.css`, `dist/fonts/fira-sans.css` und `dist/fonts/fira-sans/` aus dem
-npm-Paket `@kern-ux/native` nach `vendor/kern/` kopieren und `VERSION` anpassen.
+npm-Paket `@kern-ux/native` nach `vendor/kern/` kopieren (mitsamt `LICENSE.md`) und `VERSION` anpassen.
 
 **Release-ZIP bauen** (enthält nur die Moduldateien, gesteuert über `.gitattributes`):
 
 ```bash
-git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.1.zip v1.0.1
+git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.2.zip v1.0.2
 ```
 
 ## Autor
@@ -144,10 +188,25 @@ Michael Plas (Michi91)
 
 ## Lizenz
 
-GPL-3.0-or-later, siehe [LICENSE](LICENSE).
+- Modul-Code: GNU GPL v3 oder später, siehe [LICENSE](LICENSE).
+- Eingebundenes KERN-Kit (`vendor/kern/`): EUPL-1.2 – siehe
+  [vendor/kern/LICENSE.md](vendor/kern/LICENSE.md).
+- Schrift Fira Sans (`vendor/kern/fonts/fira-sans/`): SIL Open Font License 1.1 – siehe
+  [OFL.txt](vendor/kern/fonts/fira-sans/OFL.txt).
 
-Mitgeliefert werden:
+**Zur Kombination beider Lizenzen:** Die EUPL-1.2 führt in ihrem Anhang die GNU GPL v2 und v3 ausdrücklich als
+*kompatible Lizenzen*. Die Kompatibilitätsklausel in Artikel 5 erlaubt, eine Bearbeitung, die auf einem EUPL-Werk
+und einem Werk unter einer kompatiblen Lizenz beruht, unter den Bedingungen dieser kompatiblen Lizenz zu
+verbreiten. Das Gesamtpaket ist daher unter der GPL v3 verbreitbar.
 
-- **KERN UX** (`vendor/kern/`) unter der **EUPL-1.2**, siehe [vendor/kern/LICENSE.md](vendor/kern/LICENSE.md)
-- **Fira Sans** (`vendor/kern/fonts/fira-sans/`) unter der **SIL Open Font License 1.1**, siehe
-  [OFL.txt](vendor/kern/fonts/fira-sans/OFL.txt)
+Die Pflichten der EUPL bleiben davon unberührt und werden eingehalten: Die Lizenz- und Urheberrechtshinweise des
+Kits liegen unverändert unter `vendor/kern/` bei (bitte **nicht entfernen**), der Quellcode ist öffentlich
+zugänglich, und das Kit wird nicht verändert.
+
+**Bildwortmarke / Dachmarke:** Die Bildwortmarke (Bundesadler mit dem Schriftzug *Bund Länder Kommunen*) ist ein
+hoheitliches Zeichen und nicht Teil von KERN unter EUPL. Das Modul enthält sie nicht – bitte auch in Forks keine
+hinzufügen. Details unter
+[kern-ux.de/komponenten/bildwortmarke](https://www.kern-ux.de/komponenten/bildwortmarke/).
+
+KERN wurde von den Ländern Hamburg und Schleswig-Holstein initiiert und wird länderübergreifend weiterentwickelt.
+Mehr unter [kern-ux.de](https://www.kern-ux.de).

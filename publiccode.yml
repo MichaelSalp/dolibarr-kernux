@@ -1,0 +1,77 @@
+publiccodeYmlVersion: '0.4'
+
+name: KERN UX für Dolibarr
+url: 'https://github.com/MichaelSalp/dolibarr-kernux.git'
+landingURL: 'https://github.com/MichaelSalp/dolibarr-kernux'
+logo: docs/logo.svg
+
+softwareVersion: '1.0.2'
+releaseDate: '2026-09-17'
+
+platforms:
+  - web
+
+categories:
+  - erp
+  - design-system
+
+developmentStatus: stable
+
+softwareType: addon
+
+dependsOn:
+  open:
+    - name: Dolibarr ERP & CRM
+      versionMin: '24.0'
+
+description:
+  de:
+    genericName: Dolibarr-Modul
+    shortDescription: >-
+      Dolibarr-Modul auf Basis des KERN-Designsystems der öffentlichen
+      Verwaltung, Hauptmenü als linke Sidebar.
+    longDescription: >
+      KERN UX für Dolibarr ist ein Modul für Dolibarr ERP & CRM auf Basis des
+      KERN Design-Systems (kern-ux-plain / @kern-ux/native). KERN ist ein
+      Open-Source-Designsystem der öffentlichen Verwaltung, initiiert von den
+      Ländern Hamburg und Schleswig-Holstein und länderübergreifend
+      weiterentwickelt, mit dem Ziel eines barrierefrei zugänglichen Staates.
+
+
+      Dieses Modul ist eine Nachnutzung: Es überträgt das KERN-UX-Theme für
+      WordPress auf Dolibarr, bindet das KERN-Kit unverändert ein und übersetzt
+      das von Dolibarr erzeugte Markup auf die KERN-Designtokens. Das Hauptmenü
+      wird in eine linke Sidebar verlegt. Am Dolibarr-Kern wird nichts
+      geändert. Es handelt sich um ein nachgenutztes, nicht um ein offizielles
+      Angebot des KERN-Projekts oder eines Landes.
+    features:
+      - KERN-Kit unverändert eingebunden (CSS, Schrift Fira Sans), kein CDN
+      - Hauptmenü als linke Sidebar mit aufklappendem Untermenü
+      - Einklappbare Icon-Leiste, mobile Ansicht als Overlay
+      - Hell-/Dunkel-Modus nach Systemeinstellung
+      - Akzentfarbe aus der Dolibarr-Einstellung "Farbe für Hyperlinks"
+      - Firmenlogo in der Sidebar
+      - Übersetzbar (Deutsch, Englisch)
+    screenshots:
+      - docs/screenshots/start.png
+      - docs/screenshots/geschaeftspartner.png
+      - docs/screenshots/start-dark.png
+
+legal:
+  license: GPL-3.0-or-later
+
+maintenance:
+  type: internal
+  contacts:
+    - name: Michi91
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - de
+    - en
+
+intendedAudience:
+  scope:
+    - local-authorities
+    - government

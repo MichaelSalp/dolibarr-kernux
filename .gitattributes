@@ -4,5 +4,6 @@
 
 # Not part of the release ZIP (git archive)
 /docs export-ignore
+/publiccode.yml export-ignore
 /.gitattributes export-ignore
 /.gitignore export-ignore
