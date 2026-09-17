@@ -1,0 +1,5 @@
+# KERN UX
+Module450100Name = KERN UX
+Module450100Desc = User interface in the style of the KERN UX design system, main menu as left sidebar
+KernUXMainMenu = Main menu
+KernUXToggleSidebar = Collapse/expand menu

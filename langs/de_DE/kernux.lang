@@ -1,0 +1,5 @@
+# KERN UX
+Module450100Name = KERN UX
+Module450100Desc = Oberfläche im Stil des Design-Systems KERN UX, Hauptmenü als linke Sidebar
+KernUXMainMenu = Hauptmenü
+KernUXToggleSidebar = Menü ein-/ausklappen

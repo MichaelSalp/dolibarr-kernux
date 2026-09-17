@@ -1,0 +1,428 @@
+/*
+ * KERN UX for Dolibarr (eldy theme underneath).
+ * Copyright (C) 2026 Michael Plas (Michi91), GPL-3.0-or-later.
+ * KERN UX (vendor/kern) is EUPL-1.2, Fira Sans is SIL OFL 1.1.
+ * KERN is imported into a cascade layer: its global reset loses against eldy,
+ * its --kern-* tokens are used below to restyle eldy.
+ */
+/* kernimportant comes first: for !important declarations the earliest layer wins */
+@layer kernimportant, kern, kernfix;
+@import url("../vendor/kern/fonts/fira-sans.css");
+@import url("../vendor/kern/kern.min.css") layer(kern);
+
+@layer kernimportant {
+	/* KERN forces textarea padding 8px 16px with !important; eldy uses 8px */
+	textarea { padding: 8px !important; }
+}
+
+@layer kernfix {
+	/* Undo KERN's global reset where eldy relies on browser defaults */
+	img, picture, video, canvas, svg { display: inline; max-width: none; }
+	/* revert = browser default per element (tables/buttons are border-box there) */
+	*, *::before, *::after { box-sizing: revert; }
+	html { scrollbar-gutter: auto; scroll-behavior: auto; }
+	/* KERN gives every textarea 96px min height; Dolibarr sizes them with rows="" */
+	textarea { min-height: revert; }
+}
+
+/*
+ * eldy variables mapped to KERN tokens. KERN switches its tokens on prefers-color-scheme,
+ * so light/dark follows the system (eldy dark mode is enabled by the module: THEME_DARKMODEENABLED=1).
+ */
+:root {
+	color-scheme: light dark;
+	--kux-sidebar-width: 260px;
+	--colorbackbody: var(--kern-color-layout-background-hued);
+	--colorbackhmenu1: var(--kern-color-layout-background-default);
+	--colorbackvmenu1: var(--kern-color-layout-background-default);
+	--colortextbackhmenu: var(--kern-color-layout-text-default);
+	--colortextbackvmenu: var(--kern-color-layout-text-default);
+	--colorbacktitle1: var(--kern-color-layout-background-hued);
+	--colortexttitle: var(--kern-color-layout-text-default);
+	--colortexttitlenotab: var(--kern-color-layout-text-default);
+	--colortexttitlenotab2: var(--kern-color-layout-text-default);
+	--colortexttitlelink: var(--kern-color-action-default);
+	--colortext: var(--kern-color-layout-text-default);
+	--colortextlink: var(--kern-color-action-default);
+	--colortextbacktab: var(--kern-color-layout-text-default);
+	--colorbacktabcard1: var(--kern-color-layout-background-default);
+	--colorbacklineimpair1: var(--kern-color-layout-background-default);
+	--colorbacklineimpair2: var(--kern-color-layout-background-default);
+	--colorbacklinepair1: var(--kern-color-layout-background-default);
+	--colorbacklinepair2: var(--kern-color-layout-background-default);
+	--colorbacklinepairhover: var(--kern-color-layout-background-hued);
+	--colorbackgrey: var(--kern-color-layout-background-hued);
+	--colortopbordertitle1: var(--kern-color-decorative-border-default);
+	--inputbordercolor: var(--kern-color-layout-border);
+	--inputbackgroundcolor: var(--kern-color-form-input-background);
+	--colorboxstatsborder: var(--kern-color-decorative-border-default);
+	--tooltipbgcolor: var(--kern-color-layout-background-default);
+	--tooltipfontcolor: var(--kern-color-layout-text-default);
+	--butactionbg: var(--kern-color-action-default);
+	--textbutaction: var(--kern-color-action-on-default);
+	--butactiondeletebg: var(--kern-color-feedback-danger);
+}
+
+/* ---------- Base ---------- */
+body {
+	color: var(--kern-color-layout-text-default);
+}
+:focus-visible {
+	outline: 3px solid var(--kern-color-action-focus-default) !important;
+	outline-offset: 2px;
+}
+
+/* ---------- Top bar: only hamburger + tools/user remain ---------- */
+#id-top {
+	min-height: 52px; /* eldy's height came from the top menu entries, which are gone */
+	background: var(--kern-color-layout-background-default);
+	border-bottom: 1px solid var(--kern-color-decorative-border-default);
+	box-shadow: none;
+}
+
+/* ---------- Sidebar ---------- */
+.side-nav {
+	background: var(--kern-color-layout-background-default);
+	border-right: 1px solid var(--kern-color-decorative-border-default);
+	box-shadow: none;
+}
+.side-nav .vmenu {
+	width: var(--kux-sidebar-width);
+	margin-left: 0;
+	padding-right: 0 !important;
+}
+.kux-nav__list {
+	list-style: none;
+	margin: 0 0 16px;
+	padding: 0 12px;
+}
+.kux-nav .kux-nav__link {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 9px 12px;
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+	color: var(--kern-color-layout-text-default);
+	font-weight: 500;
+	text-decoration: none;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.kux-nav a.kux-nav__link:hover {
+	background: var(--kern-color-layout-background-hued);
+	color: var(--kern-color-action-default);
+	text-decoration: underline;
+}
+.kux-nav .kux-nav__link--disabled {
+	opacity: .5;
+	cursor: default;
+}
+.kux-nav__icon {
+	flex: 0 0 1.5em;
+	text-align: center;
+	color: var(--kern-color-layout-text-muted);
+}
+.kux-nav__icon .pictofixedwidth {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+/* Active area: bold + tinted background, not colour alone (WCAG 1.4.1) */
+.kux-nav .kux-nav__item--active > a.kux-nav__link,
+.kux-nav .kux-nav__item--active > a.kux-nav__link:hover {
+	font-weight: 600;
+	background: var(--kern-color-layout-background-hued);
+	color: var(--kern-color-action-default);
+}
+
+/* Submenu = eldy left menu output */
+.kux-nav__sub {
+	padding: 8px 0 12px 12px;
+}
+.kux-nav__sub div.blockvmenu {
+	border: 0 !important;
+	background: transparent;
+	margin: 0;
+	padding: 4px 8px 4px 0 !important;
+}
+.kux-nav__sub div.menu_titre,
+.kux-nav__sub div.menu_contenu {
+	width: auto;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+.kux-nav__sub a.vmenu:link,
+.kux-nav__sub a.vmenu:visited,
+.kux-nav__sub span.vmenu {
+	color: var(--kern-color-layout-text-default);
+	font-weight: 600;
+}
+.kux-nav__sub a.vsmenu:link,
+.kux-nav__sub a.vsmenu:visited {
+	color: var(--kern-color-layout-text-muted);
+}
+.kux-nav__sub a.vmenu:hover,
+.kux-nav__sub a.vsmenu:hover {
+	color: var(--kern-color-action-default);
+}
+.kux-nav__sub div.menu_titre .pictofixedwidth {
+	color: var(--kern-color-layout-text-muted);
+}
+.side-nav div.blockvmenusearch,
+.side-nav div.blockvmenubookmarks,
+.side-nav div.blockvmenuend {
+	background: transparent;
+	border: 0 !important;
+}
+.side-nav div.blockvmenusearch {
+	margin: 0 12px 12px;
+}
+.side-nav .vmenusearchselectcombo,
+.side-nav input.vmenusearchselectcombo[type=text],
+.side-nav div.blockvmenusearch > .select2-container /* select2 measures its width while the mobile menu is hidden */ {
+	width: 100% !important;
+	box-sizing: border-box;
+}
+/* No jump on load: the server sends a plain <select> that select2 replaces a moment later.
+   Keep the block at the final height and hide the raw select until select2 took over. */
+.side-nav div.blockvmenusearch:has(> select.vmenusearchselectcombo) {
+	position: relative;
+	height: 38px;
+}
+.side-nav select.vmenusearchselectcombo:not(.select2-hidden-accessible) {
+	visibility: hidden;
+}
+/* Values copied from the rendered select2 box so the swap is invisible */
+.kux-search-placeholder {
+	position: absolute;
+	inset: 0;
+	box-sizing: border-box;
+	padding-left: 6px;
+	border: 1px solid var(--inputbordercolor);
+	border-radius: 5px;
+	background: var(--inputbackgroundcolor);
+	line-height: 36px;
+	pointer-events: none;
+}
+.kux-search-placeholder__text {
+	color: var(--colortext);
+	opacity: .4;
+}
+.kux-search-placeholder__text .fa {
+	width: 22px;
+	padding-right: 4px;
+}
+.kux-search-placeholder b {
+	position: absolute;
+	top: 17px;
+	right: 7px;
+	border: solid transparent;
+	border-top-color: #888;
+	border-width: 5px 4px 0;
+}
+.side-nav div.blockvmenusearch:has(> .select2-container) .kux-search-placeholder {
+	display: none;
+}
+
+/* Sidebar head: logo + collapse button */
+.kux-brand {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 48px;
+	padding: 0 8px 12px 24px;
+}
+.kux-brand__link {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	color: var(--kern-color-layout-text-default) !important;
+	text-decoration: none !important;
+}
+.kux-brand__logo {
+	max-width: 100%;
+	max-height: 48px;
+	object-fit: contain;
+}
+.kux-brand__name {
+	font-size: 1.15em;
+	font-weight: 600;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.kux-brand__mark {
+	display: none !important;
+	width: 36px;
+	height: 36px;
+	object-fit: contain;
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+}
+.kux-brand__initial {
+	align-items: center;
+	justify-content: center;
+	background: var(--kern-color-action-default);
+	color: var(--kern-color-action-on-default);
+	font-weight: 600;
+	font-size: 1.1em;
+}
+.kux-rail-toggle {
+	flex: 0 0 auto;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	border: 2px solid transparent;
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+	background: transparent;
+	color: var(--kern-color-layout-text-muted);
+	cursor: pointer;
+}
+.kux-rail-toggle:hover {
+	background: var(--kern-color-layout-background-hued);
+	color: var(--kern-color-action-default);
+}
+.kux-sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0 0 0 0);
+	white-space: nowrap;
+}
+
+/* Collapsed to an icon rail (desktop only; below 768px eldy shows the sidebar as overlay) */
+@media (min-width: 768px) {
+	html.kux-rail .side-nav .vmenu {
+		width: 64px;
+	}
+	html.kux-rail .side-nav #id-left {
+		overflow: hidden;
+	}
+	html.kux-rail .kux-brand {
+		flex-direction: column;
+		padding: 0 0 12px;
+	}
+	html.kux-rail .kux-brand__logo,
+	html.kux-rail .kux-brand__name,
+	html.kux-rail .kux-nav__label,
+	html.kux-rail .kux-nav__sub,
+	html.kux-rail .side-nav div.blockvmenusearch,
+	html.kux-rail .side-nav div.blockvmenubookmarks,
+	html.kux-rail .side-nav .vmenu ~ *,
+	html.kux-rail .side-nav .vmenu > :not(.kux-brand, .kux-nav, script) {
+		display: none !important;
+	}
+	html.kux-rail .kux-brand__link {
+		flex: 0 0 auto;
+	}
+	html.kux-rail .kux-brand__mark {
+		display: flex !important;
+	}
+	html.kux-rail .kux-rail-toggle .fas {
+		transform: rotate(180deg);
+	}
+	html.kux-rail .kux-nav__list {
+		padding: 0 8px;
+	}
+	html.kux-rail .kux-nav .kux-nav__link {
+		justify-content: center;
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+@media (max-width: 767px) {
+	.kux-rail-toggle {
+		display: none;
+	}
+	.side-nav {
+		padding: 16px 0 0 !important;
+		min-height: calc(100vh - 52px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, .25);
+	}
+	.side-nav .vmenu {
+		width: min(300px, 85vw);
+	}
+}
+
+/* ---------- Tooltips (classfortooltip / classforajaxtooltip) ---------- */
+div.ui-tooltip.mytooltip {
+	border: 1px solid var(--kern-color-decorative-border-default) !important;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, .15);
+}
+
+/* ---------- Page titles ---------- */
+div.titre {
+	color: var(--kern-color-layout-text-default);
+	font-weight: 600;
+}
+
+/* ---------- Buttons ---------- */
+.butAction, .butActionDelete, .butActionRefused,
+.button:not(.bordertransp):not(.buttonpayment),
+.buttonDelete:not(.bordertransp):not(.buttonpayment) {
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+	text-transform: none;
+	font-weight: 600;
+	letter-spacing: normal;
+}
+.button:not(.bordertransp):not(.buttonpayment):not(.button-cancel) {
+	background: var(--kern-color-action-default);
+	background-image: none;
+	border: 2px solid var(--kern-color-action-default);
+	color: var(--kern-color-action-on-default);
+}
+.butAction:hover,
+.button:hover:not(.nohover):not(.bordertransp):not(.buttonpayment):not(.button-cancel) {
+	background: var(--kern-color-action-state-indicator-shade-hover);
+	box-shadow: none;
+}
+.butActionDelete, .butActionDelete:link, .butActionDelete:visited, .butActionDelete:hover, .butActionDelete:active, .buttonDelete {
+	color: var(--kern-color-action-on-default) !important;
+}
+.button.button-cancel:not(.buttongen) {
+	background: var(--kern-color-layout-background-default) !important;
+	border: 2px solid var(--kern-color-action-default) !important;
+	color: var(--kern-color-action-default) !important;
+}
+
+
+/* ---------- Form fields ---------- */
+input, input.flat, textarea, textarea.flat, form.flat select, select, select.flat,
+.select2-container--default .select2-selection--single,
+.select2-container--default .select2-selection--multiple {
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+}
+
+/* ---------- Tables ---------- */
+tr.liste_titre th, tr.liste_titre td, th.liste_titre, td.liste_titre {
+	color: var(--kern-color-layout-text-default);
+	font-weight: 600;
+}
+.oddeven:hover, tr.oddeven:hover {
+	background: var(--kern-color-layout-background-hued) !important;
+}
+
+/* ---------- Tabs ---------- */
+div.tabBar {
+	background: var(--kern-color-layout-background-default);
+	border-color: var(--kern-color-decorative-border-default);
+	/* white card on the grey page: content must not touch its edges (eldy has 0 left/right) */
+	padding-left: var(--kern-metric-space-default, 16px);
+	padding-right: var(--kern-metric-space-default, 16px);
+}
+.tabactive, a.tab#active {
+	color: var(--kern-color-action-default) !important;
+	border-bottom: 3px solid var(--kern-color-action-default) !important;
+}
+
+/* ---------- Messages ---------- */
+div.info, div.warning, div.error, div.green {
+	border-radius: var(--kern-metric-border-radius-default, 4px);
+	color: var(--kern-color-layout-text-default);
+	box-shadow: none !important;
+}
+div.info { background: var(--kern-color-feedback-info-background); border-left: 6px solid var(--kern-color-feedback-info); }
+div.green { background: var(--kern-color-feedback-success-background); border-left: 6px solid var(--kern-color-feedback-success); }
+div.warning { background: var(--kern-color-feedback-warning-background); border-left: 6px solid var(--kern-color-feedback-warning); }
+div.error { background: var(--kern-color-feedback-danger-background); border-left: 6px solid var(--kern-color-feedback-danger); }

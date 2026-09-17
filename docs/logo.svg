@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="t">
+  <title id="t">KERN UX für Dolibarr</title>
+  <!-- App window: sidebar on the left, content on the right -->
+  <rect x="4" y="12" width="120" height="104" rx="14" fill="#2044aa"/>
+  <rect x="12" y="20" width="104" height="88" rx="8" fill="#ffffff"/>
+  <path d="M12 28a8 8 0 0 1 8-8h22v88H20a8 8 0 0 1-8-8z" fill="#e8ebf5"/>
+  <!-- menu entries, the active one highlighted -->
+  <rect x="18" y="30" width="18" height="6" rx="3" fill="#8f97b8"/>
+  <rect x="16" y="42" width="22" height="10" rx="3" fill="#2044aa"/>
+  <rect x="18" y="58" width="18" height="6" rx="3" fill="#8f97b8"/>
+  <rect x="18" y="70" width="18" height="6" rx="3" fill="#8f97b8"/>
+  <rect x="18" y="82" width="18" height="6" rx="3" fill="#8f97b8"/>
+  <!-- content: title and table rows -->
+  <rect x="52" y="30" width="40" height="8" rx="4" fill="#1b1f33"/>
+  <rect x="52" y="48" width="56" height="10" rx="3" fill="#e8ebf5"/>
+  <rect x="52" y="64" width="56" height="4" rx="2" fill="#c9cee0"/>
+  <rect x="52" y="74" width="56" height="4" rx="2" fill="#c9cee0"/>
+  <rect x="52" y="84" width="56" height="4" rx="2" fill="#c9cee0"/>
+  <rect x="84" y="94" width="24" height="8" rx="3" fill="#2044aa"/>
+</svg>
