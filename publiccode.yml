@@ -5,7 +5,7 @@ url: 'https://github.com/MichaelSalp/dolibarr-kernux.git'
 landingURL: 'https://github.com/MichaelSalp/dolibarr-kernux'
 logo: docs/logo.svg
 
-softwareVersion: '1.0.2'
+softwareVersion: '1.0.3'
 releaseDate: '2026-09-17'
 
 platforms:
@@ -38,11 +38,10 @@ description:
       weiterentwickelt, mit dem Ziel eines barrierefrei zugänglichen Staates.
 
 
-      Dieses Modul ist eine Nachnutzung: Es überträgt das KERN-UX-Theme für
-      WordPress auf Dolibarr, bindet das KERN-Kit unverändert ein und übersetzt
-      das von Dolibarr erzeugte Markup auf die KERN-Designtokens. Das Hauptmenü
-      wird in eine linke Sidebar verlegt. Am Dolibarr-Kern wird nichts
-      geändert. Es handelt sich um ein nachgenutztes, nicht um ein offizielles
+      Dieses Modul ist eine Nachnutzung: Es bindet das KERN-Kit unverändert ein
+      und übersetzt das von Dolibarr erzeugte Markup auf die KERN-Designtokens.
+      Das Hauptmenü wird in eine linke Sidebar verlegt. Am Dolibarr-Kern wird
+      nichts geändert. Es handelt sich um ein nachgenutztes, nicht um ein offizielles
       Angebot des KERN-Projekts oder eines Landes.
     features:
       - KERN-Kit unverändert eingebunden (CSS, Schrift Fira Sans), kein CDN

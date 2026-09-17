@@ -18,11 +18,9 @@ KERN ist ein Open-Source-Designsystem der öffentlichen Verwaltung, initiiert vo
 Bundesebene. Sein erklärtes Ziel ist ein digital zugänglicher Staat: barrierefrei, transparent und intuitiv
 nutzbar. Genau dafür steht KERN unter der European Union Public Licence: damit Verwaltungen es nachnutzen können.
 
-Dieses Modul ist eine solche Nachnutzung. Es überträgt das
-[KERN-UX-Theme für WordPress](https://gitlab.opencode.de/sgemlichheim/kern-ux-theme-for-wordpress) auf Dolibarr:
-Es bindet das **KERN-Kit unverändert** ein und übersetzt das von Dolibarr erzeugte Markup auf die
-KERN-Designtokens. Am Dolibarr-Kern wird nichts geändert; das Modul bringt einen eigenen Menü-Handler und ein
-Stylesheet mit und lässt sich jederzeit wieder abschalten.
+Dieses Modul ist eine solche Nachnutzung. Es bindet das **KERN-Kit unverändert** ein und übersetzt das von
+Dolibarr erzeugte Markup auf die KERN-Designtokens. Am Dolibarr-Kern wird nichts geändert; das Modul bringt einen
+eigenen Menü-Handler und ein Stylesheet mit und lässt sich jederzeit wieder abschalten.
 
 > Es handelt sich um ein nachgenutztes, nicht um ein offizielles Angebot des KERN-Projekts oder eines Landes.
 
@@ -30,9 +28,9 @@ Stylesheet mit und lässt sich jederzeit wieder abschalten.
 
 ## Download
 
-### [➜ module_kernux-1.0.2.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.2/module_kernux-1.0.2.zip)
+### [➜ module_kernux-1.0.3.zip herunterladen](https://github.com/MichaelSalp/dolibarr-kernux/releases/download/v1.0.3/module_kernux-1.0.3.zip)
 
-**Version 1.0.2** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.2) ·
+**Version 1.0.3** · [Release-Notizen](https://github.com/MichaelSalp/dolibarr-kernux/releases/tag/v1.0.3) ·
 [alle Versionen](https://github.com/MichaelSalp/dolibarr-kernux/releases)
 
 Die ZIP-Datei unverändert (Dateiname nicht ändern) in Dolibarr unter
@@ -179,7 +177,7 @@ npm-Paket `@kern-ux/native` nach `vendor/kern/` kopieren (mitsamt `LICENSE.md`) 
 **Release-ZIP bauen** (enthält nur die Moduldateien, gesteuert über `.gitattributes`):
 
 ```bash
-git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.2.zip v1.0.2
+git archive --format=zip --prefix=kernux/ -o module_kernux-1.0.3.zip v1.0.3
 ```
 
 ## Autor

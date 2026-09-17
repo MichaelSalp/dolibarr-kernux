@@ -1,9 +1,13 @@
 # ChangeLog
 
+## 1.0.3
+
+- README: Textkorrektur in der Einleitung.
+
 ## 1.0.2
 
-- README nach dem Muster des KERN-UX-Themes für WordPress: was KERN ist, Hinweis auf die Nachnutzung,
-  Abschnitte Barrierefreiheit und Grundidee, Lizenzkombination EUPL/GPL, Bildwortmarke.
+- README: was KERN ist, Hinweis auf die Nachnutzung, Abschnitte Barrierefreiheit und Grundidee,
+  Lizenzkombination EUPL/GPL, Bildwortmarke.
 - `publiccode.yml` ergänzt.
 
 ## 1.0.1
